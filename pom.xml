@@ -32,18 +32,13 @@
         <commons.io.version>2.5</commons.io.version>
         <quartz.version>2.3.0</quartz.version>
         <alsome.version>1.0-SNAPSHOT</alsome.version>
-        <springboot.version>2.2.2.RELEASE</springboot.version>
+        <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <lombok.version>1.18.10</lombok.version>
     </properties>
     <dependencyManagement>
 
         <dependencies>
 
-            <!-- email依赖 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-mail</artifactId>
-            </dependency>
             <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
             <dependency>
                 <groupId>cn.hutool</groupId>
@@ -56,22 +51,7 @@
                 <version>1.9.22</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-jdbc</artifactId>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-data-redis</artifactId>
-            </dependency>
+
             <!-- mysql驱动 -->
             <dependency>
                 <groupId>mysql</groupId>
@@ -129,19 +109,12 @@
                 <artifactId>gson</artifactId>
                 <version>${gson.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-aop</artifactId>
-            </dependency>
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
             </dependency>
-            <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-configuration-processor</artifactId>
-            </dependency>
+
             <dependency>
                 <groupId>org.quartz-scheduler</groupId>
                 <artifactId>quartz</artifactId>
@@ -158,80 +131,10 @@
                 </exclusions>
             </dependency>
 
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <optional>true</optional>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.junit.vintage</groupId>
-                        <artifactId>junit-vintage-engine</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <includeSystemScope>true</includeSystemScope>
-                    <mainClass>com.alsome.alsome_create_model.AlsomeCreateModelApplication</mainClass>
-                </configuration>
-            </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--                <configuration>-->
-<!--                    <descriptorRefs>jar-with-dependencies</descriptorRefs>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>make-assembly</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>single</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-        </plugins>
-        <!-- 配置将哪些资源文件(静态文件/模板文件/mapper文件)加载到tomcat输出目录里 -->
-        <resources>
-            <resource>
-                <directory>src/main/java</directory><!--java文件的路径-->
-                <includes>
-                    <include>**/*.*</include>
-                </includes>
-                <!-- <filtering>false</filtering>-->
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory><!--资源文件的路径-->
-                <includes>
-                    <include>**/*.*</include>
-                </includes>
-                <!-- <filtering>false</filtering>-->
-            </resource>
-        </resources>
-    </build>
     <!-- 阿里云maven仓库 -->
     <repositories>
         <repository>
