@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.alsome.alsome_create_model.modules.sys.dao.PsychologicalSurveyDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.alsome.alsome_create_model.modules.sys.entity.PsychologicalSurvey" id="psychologicalSurveyMap">
+        <result property="id" column="id"/>
+        <result property="anxietyScores" column="anxiety_scores"/>
+        <result property="anxietyPerformance" column="anxiety_performance"/>
+        <result property="depressionScores" column="depression_scores"/>
+        <result property="depressionPerformance" column="depression_performance"/>
+        <result property="psychologicalScores" column="psychological_scores"/>
+        <result property="psychologicalSource" column="psychological_source"/>
+        <result property="reportingUnitId" column="reporting_unit_id"/>
+        <result property="reportingSourceId" column="reporting_source_id"/>
+        <result property="questionnaireNumber" column="questionnaire_number"/>
+        <result property="crtime" column="crTime"/>
+    </resultMap>
+
+
+</mapper>

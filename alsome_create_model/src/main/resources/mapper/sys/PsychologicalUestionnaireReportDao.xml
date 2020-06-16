@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.alsome.alsome_create_model.modules.sys.dao.PsychologicalUestionnaireReportDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.alsome.alsome_create_model.modules.sys.entity.PsychologicalUestionnaireReport" id="psychologicalUestionnaireReportMap">
+        <result property="id" column="id"/>
+        <result property="psqId" column="psq_id"/>
+        <result property="anxietyScores" column="anxiety_scores"/>
+        <result property="depressionScores" column="depression_scores"/>
+        <result property="psychologicalScores" column="psychological_scores"/>
+        <result property="emotionalImpact" column="emotional_impact"/>
+        <result property="likeSchool" column="like_school"/>
+        <result property="likeProfessional" column="like_professional"/>
+        <result property="getCounseling" column="get_counseling"/>
+        <result property="covidLifeSocre" column="covid_Life_socre"/>
+        <result property="covidLifeImpact" column="covid_Life_Impact"/>
+        <result property="crTime" column="cr_time"/>
+    </resultMap>
+
+
+</mapper>

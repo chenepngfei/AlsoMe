@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.alsome.alsome_create_model.modules.sys.dao.PsychologicalStatusQuestionnaireDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.alsome.alsome_create_model.modules.sys.entity.PsychologicalStatusQuestionnaire" id="psychologicalStatusQuestionnaireMap">
+        <result property="id" column="id"/>
+        <result property="age" column="age"/>
+        <result property="reading" column="reading"/>
+        <result property="degree" column="degree"/>
+        <result property="professionals" column="professionals"/>
+        <result property="address" column="address"/>
+        <result property="likeSchool" column="like_school"/>
+        <result property="likeProfessional" column="like_professional"/>
+        <result property="academicPressure" column="academic_pressure"/>
+        <result property="pressureSource" column="Pressure_source"/>
+        <result property="emotionalImpact" column="emotional_impact"/>
+        <result property="nervousAnxious" column="nervous_anxious"/>
+        <result property="beAfraid" column="be_afraid"/>
+        <result property="upsetHeartbeat" column="upset_heartbeat"/>
+        <result property="notMisfortune" column="not_misfortune"/>
+        <result property="headachePain" column="headache_pain"/>
+        <result property="stomachUpset" column="stomach_upset"/>
+        <result property="sleepWell" column="sleep_well"/>
+        <result property="notCalm" column="not_calm"/>
+        <result property="badMood" column="bad_mood"/>
+        <result property="wantCry" column="want_cry"/>
+        <result property="feelHappy" column="feel_happy"/>
+        <result property="easyDecline" column="easy_decline"/>
+        <result property="mindClear" column="mind_clear"/>
+        <result property="eatGood" column="eat_good"/>
+        <result property="usefulPerson" column="useful_person"/>
+        <result property="liveBetter" column="live_better"/>
+        <result property="getCounseling" column="get_counseling"/>
+        <result property="academicImpact" column="academic_impact"/>
+        <result property="scholarsDo" column="scholars_do"/>
+        <result property="covidFeeling" column="covid_feeling"/>
+        <result property="email" column="email"/>
+        <result property="crTime" column="cr_time"/>
+    </resultMap>
+
+
+</mapper>
