@@ -57,11 +57,14 @@ public class test {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}")
-    public Resultful info(@PathVariable("id") Long id){
+    /**
+     * 信息
+     */
+    @RequestMapping("/info")
+    public Resultful info(@RequestBody PsychologicalUestionnaireReport psychologicalUestionnaireReport ){
         Map<String,Object> map = new HashMap<>();
         //PsychologicalSurvey psychologicalSurvey = psychologicalSurveyService.getById(id);
-        PsychologicalUestionnaireReport psychologicalSurvey = psychologicalUestionnaireReportService.getById(id);
+        PsychologicalUestionnaireReport psychologicalSurvey = psychologicalUestionnaireReportService.getPsychologicalUestionnaireReport(psychologicalUestionnaireReport);
         if(psychologicalSurvey != null){
            // ReportingSource byId = reportingSourceService.getById(psychologicalSurvey.getReportingSourceId());
            // ReportingUnit byId1 = reportingUnitService.getById(psychologicalSurvey.getReportingUnitId());

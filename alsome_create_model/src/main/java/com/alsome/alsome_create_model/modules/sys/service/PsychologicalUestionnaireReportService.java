@@ -15,5 +15,7 @@ import java.util.Map;
 public interface PsychologicalUestionnaireReportService extends IService<PsychologicalUestionnaireReport> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    PsychologicalUestionnaireReport getPsychologicalUestionnaireReport(PsychologicalUestionnaireReport psychologicalUestionnaireReport);
 }
 

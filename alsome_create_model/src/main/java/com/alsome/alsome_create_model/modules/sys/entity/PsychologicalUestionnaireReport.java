@@ -68,6 +68,11 @@ public class PsychologicalUestionnaireReport implements Serializable {
 	 * 疫情生活及影响
 	 */
 	private String covidLifeImpact;
+
+	/**
+	 * 邮箱
+	 */
+	private  String email;
 	/**
 	 * 创建时间
 	 */

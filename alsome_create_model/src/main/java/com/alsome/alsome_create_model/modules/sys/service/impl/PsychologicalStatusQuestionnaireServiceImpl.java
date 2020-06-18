@@ -2,25 +2,24 @@ package com.alsome.alsome_create_model.modules.sys.service.impl;
 import com.AlsoMe.commons.enums.*;
 import com.AlsoMe.commons.utils.PageUtils;
 import com.AlsoMe.commons.utils.Query;
+import com.alsome.alsome_create_model.modules.sys.dao.PsychologicalStatusQuestionnaireDao;
+import com.alsome.alsome_create_model.modules.sys.entity.PsychologicalStatusQuestionnaire;
 import com.alsome.alsome_create_model.modules.sys.entity.PsychologicalUestionnaireReport;
+import com.alsome.alsome_create_model.modules.sys.service.PsychologicalStatusQuestionnaireService;
 import com.alsome.alsome_create_model.modules.sys.service.PsychologicalUestionnaireReportService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Date;
-import java.util.Map;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.alsome.alsome_create_model.modules.sys.dao.PsychologicalStatusQuestionnaireDao;
-import com.alsome.alsome_create_model.modules.sys.entity.PsychologicalStatusQuestionnaire;
-import com.alsome.alsome_create_model.modules.sys.service.PsychologicalStatusQuestionnaireService;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.print.DocFlavor;
+import java.util.Date;
+import java.util.Map;
 
 
 @Service("psychologicalStatusQuestionnaireService")
@@ -72,6 +71,7 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                 JSONObject jsonObject = JSONObject.fromObject(jsonArray.get(i).toString());
                 if (!jsonObject.isEmpty()) {
                     Object get_id = jsonObject.get("id");
+                    log.info("get_id:{}",get_id);
                     if(get_id == null){
                         continue;
                     }
@@ -84,10 +84,12 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                     if(!get_id.equals(31)){
                         key_id = (int)choose.get(0);
 
+                        if(key_id <= 0){
+                            continue;
+                        }
+
                     }
-                    if(key_id <= 0){
-                        continue;
-                    }
+
 
                     if (get_id.equals(1)) { //设置年龄
                         psychologicalStatusQuestionnaire.setAge(key_id);
@@ -218,6 +220,7 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                     }
                     if (get_id.equals(31)) { //邮箱
                         psychologicalStatusQuestionnaire.setEmail(choose.getString(0));
+                        psychologicalUestionnaireReport.setEmail(choose.getString(0));
                     }
 
 

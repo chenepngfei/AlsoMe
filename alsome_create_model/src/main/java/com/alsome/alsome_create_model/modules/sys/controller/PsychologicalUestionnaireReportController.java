@@ -1,20 +1,15 @@
 package com.alsome.alsome_create_model.modules.sys.controller;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import com.AlsoMe.commons.utils.PageUtils;
 import com.AlsoMe.commons.utils.Resultful;
 import com.AlsoMe.commons.utils.ValidatorUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import com.alsome.alsome_create_model.modules.sys.entity.PsychologicalUestionnaireReport;
 import com.alsome.alsome_create_model.modules.sys.service.PsychologicalUestionnaireReportService;
-import redis.clients.jedis.params.Params;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 /**

@@ -73,8 +73,6 @@ public class PsychologicalSurvey implements Serializable {
 	 */
 	private String warmPrompt;
 
-
-
 	/**
 	 * 报告日期
 	 */
