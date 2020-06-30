@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.QuizzesResultDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.QuizzesResultEntity" id="quizzesResultMap">
+        <result property="quizzesResultId" column="quizzes_result_id"/>
+        <result property="quizzesId" column="quizzes_id"/>
+        <result property="quizzesResult" column="quizzes_result"/>
+        <result property="userId" column="user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="type" column="type"/>
+        <result property="cardTypeId" column="card_type_id"/>
+        <result property="quizzesQuestions" column="quizzes_questions"/>
+    </resultMap>
+
+
+</mapper>

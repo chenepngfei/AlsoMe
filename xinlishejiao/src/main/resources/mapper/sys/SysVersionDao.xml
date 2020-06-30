@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.SysVersionDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.SysVersionEntity" id="sysVersionMap">
+        <result property="sysversionid" column="SysVersionId"/>
+        <result property="versionexplain" column="VersionExplain"/>
+        <result property="versiontime" column="VersionTime"/>
+        <result property="versionurl" column="VersionUrl"/>
+        <result property="versionlowest" column="VersionLowest"/>
+        <result property="version" column="Version"/>
+        <result property="versionname" column="VersionName"/>
+        <result property="versionupdate" column="Versionupdate"/>
+        <result property="serviceCharge" column="service_charge"/>
+    </resultMap>
+
+
+</mapper>

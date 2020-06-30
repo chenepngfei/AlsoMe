@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.MyTaskDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.MyTaskEntity" id="myTaskMap">
+        <result property="myTaskId" column="my_task_id"/>
+        <result property="taskId" column="task_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="completionDegree" column="completion_degree"/>
+        <result property="createTime" column="create_time"/>
+        <result property="editTime" column="edit_time"/>
+        <result property="state" column="state"/>
+        <result property="taskLevel" column="task_level"/>
+        <result property="taskType" column="task_type"/>
+    </resultMap>
+
+
+</mapper>

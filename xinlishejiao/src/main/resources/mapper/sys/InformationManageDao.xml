@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.InformationManageDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.InformationManageEntity" id="informationManageMap">
+        <result property="informationId" column="information_id"/>
+        <result property="informationType" column="information_type"/>
+        <result property="type" column="type"/>
+        <result property="title" column="title"/>
+        <result property="informationPic" column="information_pic"/>
+        <result property="videoUrl" column="video_url"/>
+        <result property="content" column="content"/>
+        <result property="redNumber" column="red_number"/>
+        <result property="createTime" column="create_time"/>
+        <result property="commentNumber" column="comment_number"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="editTime" column="edit_time"/>
+        <result property="openVideoId" column="open_video_id"/>
+    </resultMap>
+
+
+</mapper>

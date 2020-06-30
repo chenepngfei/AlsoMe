@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.ValidCodeDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.ValidCodeEntity" id="validCodeMap">
+        <result property="validCodeId" column="valid_code_id"/>
+        <result property="userPhoe" column="user_phoe"/>
+        <result property="validCode" column="valid_code"/>
+        <result property="codeId" column="code_id"/>
+        <result property="codeType" column="code_type"/>
+        <result property="useCode" column="use_code"/>
+        <result property="createTime" column="create_time"/>
+        <result property="userMailbox" column="user_mailbox"/>
+    </resultMap>
+
+
+</mapper>

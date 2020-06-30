@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.SysReserveDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.SysReserveEntity" id="sysReserveMap">
+        <result property="reserveId" column="reserve_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="expertId" column="expert_id"/>
+        <result property="reserveLength" column="reserve_length"/>
+        <result property="reserveDate" column="reserve_date"/>
+        <result property="reserveMoney" column="reserve_money"/>
+        <result property="reserveState" column="reserve_state"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="seekHelpId" column="seek_help_id"/>
+        <result property="reserveDescribe" column="reserve_describe"/>
+        <result property="reserveTime" column="reserve_time"/>
+        <result property="reserveTimeResult" column="reserve_time_result"/>
+    </resultMap>
+
+
+</mapper>

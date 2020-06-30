@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文本管理表</title>
+    <link rel="stylesheet" href="/statics/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/statics/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/statics/plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="/statics/plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="/statics/css/main.css">
+    <script src="/statics/libs/jquery.min.js"></script>
+    <script src="/statics/plugins/layer/layer.js"></script>
+    <script src="/statics/libs/bootstrap.min.js"></script>
+    <script src="/statics/libs/vue.min.js"></script>
+    <script src="/statics/plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="/statics/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="/statics/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="/statics/js/common.js"></script>
+
+
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">1：用户注册；2：关于我们；3：帮助；4：任务说明 5:会员权益说明   6:充值说明 7.提现微信规则 8.提现银行卡规则 9.金币说明 10.金币兑换说明</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="copywritingManage.copywritingType" placeholder="1：用户注册；2：关于我们；3：帮助；4：任务说明 5:会员权益说明   6:充值说明 7.提现微信规则 8.提现银行卡规则 9.金币说明 10.金币兑换说明"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="copywritingManage.logoUrl" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="copywritingManage.copywritingName" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="copywritingManage.copywritingContent" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="copywritingManage.contact" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="copywritingManage.createTime" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">类型名</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="copywritingManage.typeName" placeholder="类型名"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/statics/js/modules/sys/copywritingmanage.js"></script>
+</body>
+</html>

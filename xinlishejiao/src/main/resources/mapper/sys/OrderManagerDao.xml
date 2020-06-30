@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.OrderManagerDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.OrderManagerEntity" id="orderManagerMap">
+        <result property="orderId" column="order_id"/>
+        <result property="sourceId" column="source_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderNumber" column="order_number"/>
+        <result property="outTradeNo" column="out_trade_no"/>
+        <result property="orderType" column="order_type"/>
+        <result property="payState" column="pay_state"/>
+        <result property="payTime" column="pay_time"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="orderPrice" column="order_price"/>
+        <result property="payType" column="pay_type"/>
+    </resultMap>
+
+
+</mapper>

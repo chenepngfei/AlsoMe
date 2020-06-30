@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.CourseManageDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.CourseManageEntity" id="courseManageMap">
+        <result property="courseId" column="course_id"/>
+        <result property="coursePic" column="course_pic"/>
+        <result property="courseTitle" column="course_title"/>
+        <result property="courseCategoryId" column="course_category_id"/>
+        <result property="price" column="price"/>
+        <result property="studyNumber" column="study_number"/>
+        <result property="commentNumber" column="comment_number"/>
+        <result property="likeNumber" column="like_number"/>
+        <result property="createTime" column="create_time"/>
+        <result property="courseSynopsis" column="course_synopsis"/>
+        <result property="userType" column="user_type"/>
+        <result property="applicableLevel" column="applicable_level"/>
+    </resultMap>
+
+
+</mapper>

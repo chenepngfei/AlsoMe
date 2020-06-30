@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.CommunityManageDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.CommunityManageEntity" id="communityManageMap">
+        <result property="communityId" column="community_id"/>
+        <result property="communityName" column="community_name"/>
+        <result property="communityDescribe" column="community_describe"/>
+        <result property="peopleNumber" column="people_number"/>
+        <result property="createUser" column="create_user"/>
+        <result property="createTime" column="create_time"/>
+        <result property="communityType" column="community_type"/>
+        <result property="checkStatus" column="Check_Status"/>
+        <result property="checkOpinion" column="check_opinion"/>
+        <result property="communityUserPicture" column="community_user_picture"/>
+        <result property="communityUserNickName" column="community_user_nick_name"/>
+        <result property="userId" column="user_id"/>
+    </resultMap>
+
+
+</mapper>

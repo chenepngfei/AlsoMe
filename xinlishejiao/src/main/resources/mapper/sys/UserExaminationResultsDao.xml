@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.UserExaminationResultsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.UserExaminationResultsEntity" id="userExaminationResultsMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="courseId" column="course_id"/>
+        <result property="chapterId" column="chapter_id"/>
+        <result property="examinationPaperId" column="examination_paper_id"/>
+        <result property="answer" column="answer"/>
+        <result property="grade" column="grade"/>
+        <result property="createTime" column="create_time"/>
+        <result property="state" column="state"/>
+        <result property="answerText" column="answer_text"/>
+        <result property="examinationNum" column="examination_num"/>
+        <result property="answerDetail" column="answer_detail"/>
+        <result property="questionsName" column="questions_name"/>
+        <result property="questionsResult" column="questions_result"/>
+    </resultMap>
+
+
+</mapper>

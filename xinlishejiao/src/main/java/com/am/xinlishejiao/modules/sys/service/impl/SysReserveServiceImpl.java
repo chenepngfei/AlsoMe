@@ -1,0 +1,29 @@
+package com.am.xinlishejiao.modules.sys.service.impl;
+
+import org.springframework.stereotype.Service;
+import java.util.Map;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.AlsoMe.commons.utils.PageUtils;
+import com.AlsoMe.commons.utils.Query;
+
+import com.am.xinlishejiao.modules.sys.dao.SysReserveDao;
+import com.am.xinlishejiao.modules.sys.entity.SysReserveEntity;
+import com.am.xinlishejiao.modules.sys.service.SysReserveService;
+
+
+@Service("sysReserveService")
+public class SysReserveServiceImpl extends ServiceImpl<SysReserveDao, SysReserveEntity> implements SysReserveService {
+
+    @Override
+    public PageUtils queryPage(Map<String, Object> params) {
+        IPage<SysReserveEntity> page = this.page(
+                new Query<SysReserveEntity>().getPage(params),
+                new QueryWrapper<SysReserveEntity>()
+        );
+
+        return new PageUtils(page);
+    }
+
+}

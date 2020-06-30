@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.MbUserDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.MbUserEntity" id="mbUserMap">
+        <result property="userId" column="user_id"/>
+        <result property="userNickName" column="user_nick_name"/>
+        <result property="password" column="password"/>
+        <result property="userPicture" column="user_picture"/>
+        <result property="mailbox" column="mailbox"/>
+        <result property="birthday" column="birthday"/>
+        <result property="phone" column="phone"/>
+        <result property="country" column="country"/>
+        <result property="city" column="city"/>
+        <result property="sex" column="sex"/>
+        <result property="hobby" column="hobby"/>
+        <result property="userGrade" column="user_grade"/>
+        <result property="memberGrade" column="member_grade"/>
+        <result property="userType" column="user_type"/>
+        <result property="memberEndTime" column="member_end_time"/>
+        <result property="createTime" column="create_time"/>
+        <result property="editeTime" column="edite_time"/>
+        <result property="isFroen" column="is_froen"/>
+        <result property="isDel" column="is_del"/>
+        <result property="gold" column="gold"/>
+        <result property="money" column="money"/>
+        <result property="isMate" column="is_mate"/>
+        <result property="mateNumber" column="mate_number"/>
+        <result property="favoravleRate" column="favoravle_rate"/>
+        <result property="helpNumber" column="help_number"/>
+        <result property="usercurrentlogintime" column="UserCurrentLoginTime"/>
+        <result property="usercurrentloginip" column="UserCurrentLoginIP"/>
+        <result property="invitationCode" column="invitation_code"/>
+        <result property="introduction" column="introduction"/>
+        <result property="age" column="age"/>
+        <result property="haseditnick" column="haseditnick"/>
+        <result property="cover" column="cover"/>
+        <result property="hasaccept" column="hasaccept"/>
+        <result property="appointmentAmount" column="appointment_amount"/>
+        <result property="withdrawPass" column="withdraw_pass"/>
+        <result property="earnings" column="earnings"/>
+        <result property="idCarJust" column="id_car_just"/>
+        <result property="idCarBack" column="id_car_back"/>
+        <result property="field" column="field"/>
+        <result property="beGoodAt" column="be_good_at"/>
+        <result property="registerTestResult" column="register_test_result"/>
+        <result property="learningDays" column="learning_days"/>
+        <result property="cardTestNumber" column="card_test_number"/>
+        <result property="easemobuuid" column="easemobuuid"/>
+        <result property="huanxinPassword" column="huanxin_password"/>
+        <result property="isOnline" column="is_online"/>
+        <result property="delReason" column="del_reason"/>
+        <result property="wechatOpenId" column="wechat_open_id"/>
+        <result property="loginType" column="login_type"/>
+        <result property="qqId" column="qq_id"/>
+        <result property="weiboId" column="weibo_id"/>
+        <result property="iosId" column="ios_id"/>
+        <result property="helpTime" column="help_time"/>
+        <result property="freeService" column="free_service"/>
+        <result property="equipmentNo" column="equipment_no"/>
+        <result property="longitude" column="longitude"/>
+        <result property="latitude" column="latitude"/>
+    </resultMap>
+
+
+</mapper>

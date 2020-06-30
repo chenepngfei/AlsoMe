@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>广告表</title>
+    <link rel="stylesheet" href="/statics/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/statics/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/statics/plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="/statics/plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="/statics/css/main.css">
+    <script src="/statics/libs/jquery.min.js"></script>
+    <script src="/statics/plugins/layer/layer.js"></script>
+    <script src="/statics/libs/bootstrap.min.js"></script>
+    <script src="/statics/libs/vue.min.js"></script>
+    <script src="/statics/plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="/statics/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="/statics/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="/statics/js/common.js"></script>
+
+
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertManage.advertName" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertManage.advertPic" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertManage.advertUrl" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0:在线   1:下线</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertManage.state" placeholder="0:在线   1:下线"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertManage.createTime" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0:广告页 4:最新资讯 5:发现首页顶部 6:社区广告 7:课程页面 8:发现首页底部</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertManage.advertType" placeholder="0:广告页 4:最新资讯 5:发现首页顶部 6:社区广告 7:课程页面 8:发现首页底部"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">跳转目标ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertManage.targetId" placeholder="跳转目标ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0:自定义广告 1:图文资讯 2:课程 3:测试题 4:卡牌测试 5:视频资讯</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="advertManage.targetType" placeholder="0:自定义广告 1:图文资讯 2:课程 3:测试题 4:卡牌测试 5:视频资讯"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/statics/js/modules/sys/advertmanage.js"></script>
+</body>
+</html>

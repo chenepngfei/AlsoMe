@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.LogoManageDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.LogoManageEntity" id="logoManageMap">
+        <result property="logoId" column="logo_id"/>
+        <result property="logoName" column="logo_name"/>
+        <result property="logoUrl" column="logo_url"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+
+</mapper>

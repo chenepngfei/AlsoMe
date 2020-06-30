@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户管理表</title>
+    <link rel="stylesheet" href="/statics/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/statics/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/statics/plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="/statics/plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="/statics/css/main.css">
+    <script src="/statics/libs/jquery.min.js"></script>
+    <script src="/statics/plugins/layer/layer.js"></script>
+    <script src="/statics/libs/bootstrap.min.js"></script>
+    <script src="/statics/libs/vue.min.js"></script>
+    <script src="/statics/plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="/statics/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="/statics/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="/statics/js/common.js"></script>
+
+
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.userNickName" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.password" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.userPicture" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.mailbox" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.birthday" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.phone" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.country" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.city" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">1:</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.sex" placeholder="1:"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.hobby" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.userGrade" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0:非会员 1粉金会员,2青金会员,3铂金会员</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.memberGrade" placeholder="0:非会员 1粉金会员,2青金会员,3铂金会员"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">1:普通用户  2:seeker  3:help   4:专家</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.userType" placeholder="1:普通用户  2:seeker  3:help   4:专家"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.memberEndTime" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.createTime" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.editeTime" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0:未冻结  大于0为冻结的剩余天数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.isFroen" placeholder="0:未冻结  大于0为冻结的剩余天数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0:正常 1:删除</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.isDel" placeholder="0:正常 1:删除"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">金币金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.gold" placeholder="金币金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">人民币金额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.money" placeholder="人民币金额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否匹配 0;不允许  1:允许</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.isMate" placeholder="是否匹配 0;不允许  1:允许"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">匹配剩余次数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.mateNumber" placeholder="匹配剩余次数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">好评率</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.favoravleRate" placeholder="好评率"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">帮助次数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.helpNumber" placeholder="帮助次数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.usercurrentlogintime" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.usercurrentloginip" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">邀请码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.invitationCode" placeholder="邀请码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.introduction" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.age" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.haseditnick" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">1:马甲1 2:马甲23:马甲3 4:马甲4</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.cover" placeholder="1:马甲1 2:马甲23:马甲3 4:马甲4"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.hasaccept" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.appointmentAmount" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.withdrawPass" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.earnings" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.idCarJust" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.idCarBack" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">领域</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.field" placeholder="领域"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">擅长</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.beGoodAt" placeholder="擅长"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">注册测试结果</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.registerTestResult" placeholder="注册测试结果"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">学习天数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.learningDays" placeholder="学习天数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">卡片每日剩余抽取次数</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.cardTestNumber" placeholder="卡片每日剩余抽取次数"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">环信ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.easemobuuid" placeholder="环信ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">环信密码</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.huanxinPassword" placeholder="环信密码"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">是否在线 0:否 1:是</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.isOnline" placeholder="是否在线 0:否 1:是"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">账号注销原因</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.delReason" placeholder="账号注销原因"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">微信用户ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.wechatOpenId" placeholder="微信用户ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0：账号密码登录 1：账号验证码登录 2:qq登录 3:微信登录 4:微博登录 5:ios登录</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.loginType" placeholder="0：账号密码登录 1：账号验证码登录 2:qq登录 3:微信登录 4:微博登录 5:ios登录"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">QQID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.qqId" placeholder="QQID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">微博ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.weiboId" placeholder="微博ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">苹果ID</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.iosId" placeholder="苹果ID"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">帮助时长</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.helpTime" placeholder="帮助时长"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.freeService" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">用户注册设备号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.equipmentNo" placeholder="用户注册设备号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">经度</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.longitude" placeholder="经度"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">纬度</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="mbUser.latitude" placeholder="纬度"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/statics/js/modules/sys/mbuser.js"></script>
+</body>
+</html>

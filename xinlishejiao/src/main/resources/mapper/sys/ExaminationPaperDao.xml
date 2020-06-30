@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.ExaminationPaperDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.ExaminationPaperEntity" id="examinationPaperMap">
+        <result property="examinationPaperId" column="examination_paper_id"/>
+        <result property="paperPic" column="paper_pic"/>
+        <result property="paperName" column="paper_name"/>
+        <result property="paperDescribe" column="paper_describe"/>
+        <result property="courseId" column="course_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="chapterId" column="chapter_id"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户充值记录表</title>
+    <link rel="stylesheet" href="/statics/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/statics/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/statics/plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="/statics/plugins/ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="/statics/css/main.css">
+    <script src="/statics/libs/jquery.min.js"></script>
+    <script src="/statics/plugins/layer/layer.js"></script>
+    <script src="/statics/libs/bootstrap.min.js"></script>
+    <script src="/statics/libs/vue.min.js"></script>
+    <script src="/statics/plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="/statics/plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="/statics/plugins/ztree/jquery.ztree.all.min.js"></script>
+    <script src="/statics/js/common.js"></script>
+
+
+</head>
+<body>
+<div id="rrapp" v-cloak>
+    <div v-show="showList">
+        <div class="grid-btn">
+            <a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
+            <a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+            <a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+        </div>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+
+    <div v-show="!showList" class="panel panel-default">
+        <div class="panel-heading">{{title}}</div>
+        <form class="form-horizontal">
+														                    <div class="form-group">
+                        <div class="col-sm-2 control-label">订单号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.orderNumber" placeholder="订单号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">三方充值单号</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.outtradeno" placeholder="三方充值单号"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">充值人</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.userId" placeholder="充值人"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0：充值金币  1：充值余额</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.rechargeType" placeholder="0：充值金币  1：充值余额"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.rechargeAmount" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.rechargeTime" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0：余额支付 1：微信 2:支付宝</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.payType" placeholder="0：余额支付 1：微信 2:支付宝"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">0：待支付 1：已支付</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.payStatus" placeholder="0：待支付 1：已支付"/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.payTime" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label"></div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.payPrice" placeholder=""/>
+                        </div>
+                    </div>
+											                    <div class="form-group">
+                        <div class="col-sm-2 control-label">充值方式</div>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="userRecharge.rechargeWay" placeholder="充值方式"/>
+                        </div>
+                    </div>
+							            <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <input type="button" class="btn btn-primary" id="btnSaveOrUpdate" data-loading-text="保存中..." @click="saveOrUpdate" value="确定"/>
+                &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/statics/js/modules/sys/userrecharge.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.SysSeekHelpDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.SysSeekHelpEntity" id="sysSeekHelpMap">
+        <result property="seekHelpId" column="seek_help_id"/>
+        <result property="seekHelNumber" column="seek_hel_number"/>
+        <result property="userId" column="user_id"/>
+        <result property="seekHelpTypeId" column="seek_help_type_id"/>
+        <result property="showType" column="show_type"/>
+        <result property="seekHelpTitle" column="seek_help_title"/>
+        <result property="seekContent" column="seek_content"/>
+        <result property="seekState" column="seek_state"/>
+        <result property="isUrgent" column="is_urgent"/>
+        <result property="urgentGrade" column="urgent_grade"/>
+        <result property="urgentGold" column="urgent_gold"/>
+        <result property="createTime" column="create_time"/>
+        <result property="isRecommend" column="is_recommend"/>
+        <result property="helpUserId" column="help_user_id"/>
+        <result property="rewardGold" column="reward_gold"/>
+        <result property="videoPic" column="video_pic"/>
+        <result property="seekDescribe" column="seek_describe"/>
+    </resultMap>
+
+
+</mapper>

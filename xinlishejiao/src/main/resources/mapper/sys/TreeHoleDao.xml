@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.am.xinlishejiao.modules.sys.dao.TreeHoleDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.am.xinlishejiao.modules.sys.entity.TreeHoleEntity" id="treeHoleMap">
+        <result property="treeHoleId" column="tree_hole_id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="userId" column="user_id"/>
+        <result property="isPublic" column="is_public"/>
+        <result property="state" column="state"/>
+        <result property="createTime" column="create_time"/>
+        <result property="communityId" column="community_id"/>
+        <result property="isDraft" column="is_draft"/>
+    </resultMap>
+
+
+</mapper>
