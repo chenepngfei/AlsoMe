@@ -127,6 +127,6 @@ public class DownloadUtils {
     }
 
     public static void main(String[] args) {
-        httpDownload("http://c.qudian.store/ios1592299588874.mp4","/opt/module/22.mp4");
+        httpDownload("http://z.qudian.store/sv/5c794494-172d15c39de/5c794494-172d15c39de.mp4","/opt/module/222.mp4");
     }
 }

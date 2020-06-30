@@ -1,7 +1,17 @@
+/**
+ * Copyright (c) 2016-2019 人人开源 All rights reserved.
+ *
+ * https://www.renren.io
+ *
+ * 版权所有，侵权必究！
+ */
+
 package com.AlsoMe.commons.utils;
 
 /**
  * 常量
+ *
+ * @author Mark sunlightcs@gmail.com
  */
 public class Constant {
 	/** 超级管理员ID */
@@ -56,7 +66,7 @@ public class Constant {
             return value;
         }
     }
-
+    
     /**
      * 定时任务状态
      */
@@ -75,7 +85,7 @@ public class Constant {
         ScheduleStatus(int value) {
             this.value = value;
         }
-
+        
         public int getValue() {
             return value;
         }

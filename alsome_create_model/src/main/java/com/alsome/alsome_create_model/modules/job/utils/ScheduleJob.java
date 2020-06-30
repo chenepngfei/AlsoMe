@@ -1,5 +1,4 @@
 package com.alsome.alsome_create_model.modules.job.utils;
-import com.AlsoMe.commons.utils.SpringContextUtils;
 import com.alsome.alsome_create_model.modules.job.entity.ScheduleJobEntity;
 import com.alsome.alsome_create_model.modules.job.entity.ScheduleJobLogEntity;
 import com.alsome.alsome_create_model.modules.job.service.ScheduleJobLogService;

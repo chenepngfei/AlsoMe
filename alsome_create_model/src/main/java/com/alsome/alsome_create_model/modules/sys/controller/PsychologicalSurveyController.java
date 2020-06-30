@@ -1,8 +1,11 @@
 package com.alsome.alsome_create_model.modules.sys.controller;
 
+import com.AlsoMe.commons.enums.AnxietyPerformanceEnums;
+import com.AlsoMe.commons.enums.DepressionPerformanceEnums;
 import com.AlsoMe.commons.utils.DateUtils;
 import com.AlsoMe.commons.utils.PageUtils;
 import com.AlsoMe.commons.utils.Resultful;
+import com.alsome.alsome_create_model.common.utils.RedisUtils;
 import com.alsome.alsome_create_model.modules.sys.entity.PsychologicalSurvey;
 import com.alsome.alsome_create_model.modules.sys.entity.PsychologicalUestionnaireReport;
 import com.alsome.alsome_create_model.modules.sys.entity.ReportingSource;
@@ -38,7 +41,8 @@ public class PsychologicalSurveyController {
     private PsychologicalStatusQuestionnaireService psychologicalStatusQuestionnaireService;
     @Autowired
     private PsychologicalUestionnaireReportService psychologicalUestionnaireReportService;
-
+    @Autowired
+    private RedisUtils redisUtils;
 
     /**
      * 列表
@@ -55,27 +59,57 @@ public class PsychologicalSurveyController {
     /**
      * 信息
      */
+    @RequestMapping("/findCount")
+    public Resultful findCount(){
+
+        String key = "xinlicepin";
+        Map<String,Object> map = new HashMap<>();
+        Integer count = 0;
+        if(redisUtils.exists(key)){
+            Object o = redisUtils.get(key);
+            log.info("访问次数：{}",o);
+            if(o != null){
+                count = (Integer) o + 1;
+            }else{
+                count = 1;
+            }
+        }else{
+            count = 1;
+        }
+
+
+        redisUtils.set(key,count);
+        return Resultful.ok().put("param", count);
+    }
+
+
+
+
+
+    /**
+     * 信息
+     */
     @RequestMapping("/info")
-    public Resultful info(@RequestBody  PsychologicalUestionnaireReport psychologicalUestionnaireReport ){
+    public Resultful info(@RequestBody PsychologicalUestionnaireReport psychologicalUestionnaireReport ){
 
 
         Map<String,Object> map = new HashMap<>();
         //PsychologicalSurvey psychologicalSurvey = psychologicalSurveyService.getById(id);
         PsychologicalUestionnaireReport psychologicalSurvey = psychologicalUestionnaireReportService.getPsychologicalUestionnaireReport(psychologicalUestionnaireReport);
         if(psychologicalSurvey != null){
-            // ReportingSource byId = reportingSourceService.getById(psychologicalSurvey.getReportingSourceId());
-            // ReportingUnit byId1 = reportingUnitService.getById(psychologicalSurvey.getReportingUnitId());
-            map.put("reportingSource","中国海外留学生心理状态调研问卷");
-            map.put("reportingUnit","CISC中国海外留学生心理支持中心");
+//             ReportingSource byId = reportingSourceService.getById(psychologicalSurvey.getReportingSourceId());
+//             ReportingUnit byId1 = reportingUnitService.getById(psychologicalSurvey.getReportingUnitId());
+            map.put("reportingSource","2020夏•中国大学生心理状况调研问卷");
+            map.put("reportingUnit","北京心西游季教育科技有限公司");
 
             //焦虑情况积分
             map.put("anxietyScores",psychologicalSurvey.getAnxietyScores());
             //焦虑情况表现
-            map.put("anxietyPerformance","你的焦虑得分显示无焦虑症状。表明你现在心情稳定，心理相对健康,请继 续保持当前状态，用心学习，快乐生活。");
+            map.put("anxietyPerformance", AnxietyPerformanceEnums.getDescribeByKey(psychologicalSurvey.getAnxietyScores()));
             //抑郁自评得分
             map.put("depressionScores",psychologicalSurvey.getDepressionScores());
             //抑郁状况表现
-            map.put("depressionPerformance","你的抑郁得分显示无抑郁。表明你现在心情稳定，心理相对健康,请继续保 持当前状态，轻松学习，快乐生活");
+            map.put("depressionPerformance", DepressionPerformanceEnums.getDescribeByKey(psychologicalSurvey.getDepressionScores()));
             //压力积分
             map.put("psychologicalScores",psychologicalSurvey.getPsychologicalScores());
             //压力来源
@@ -83,7 +117,7 @@ public class PsychologicalSurveyController {
             //创建日期
             map.put("reportingDate", DateUtils.format_zn(psychologicalSurvey.getCrTime()));
             //问卷编号
-            map.put("questionnaireNumber","CISC201912-HA0041");
+            map.put("questionnaireNumber","202006-HA");
             //学习生活满意度
             map.put("lifeSatisfaction","你对目前学习生活满意程度不高，表现在你对现在的学校喜欢程度感到比 较喜欢，对现在所学习的专业喜欢程度感到非常喜欢。可尝试参与校园中的各 类活动，与他人建立良好关系能在一定程度上提升学习生活的幸福感。");
             map.put("generalAdvice","总体而言，你的心理状况呈现出无焦虑和无抑郁症状，你表现出较大的学业 压力，需要你继续保持积极心态，并随时关注和调节。");
@@ -107,17 +141,17 @@ public class PsychologicalSurveyController {
         if(psychologicalSurvey != null){
            // ReportingSource byId = reportingSourceService.getById(psychologicalSurvey.getReportingSourceId());
            // ReportingUnit byId1 = reportingUnitService.getById(psychologicalSurvey.getReportingUnitId());
-            map.put("reportingSource","中国海外留学生心理状态调研问卷");
-            map.put("reportingUnit","CISC中国海外留学生心理支持中心");
+            map.put("reportingSource","2020夏•中国大学生心理状况调研问卷");
+            map.put("reportingUnit","北京心西游季教育科技有限公司");
 
             //焦虑情况积分
             map.put("anxietyScores",psychologicalSurvey.getAnxietyScores());
             //焦虑情况表现
-            map.put("anxietyPerformance","你的焦虑得分显示无焦虑症状。表明你现在心情稳定，心理相对健康,请继 续保持当前状态，用心学习，快乐生活。");
+            map.put("anxietyPerformance", AnxietyPerformanceEnums.getDescribeByKey(psychologicalSurvey.getAnxietyScores()));
             //抑郁自评得分
             map.put("depressionScores",psychologicalSurvey.getDepressionScores());
             //抑郁状况表现
-            map.put("depressionPerformance","你的抑郁得分显示无抑郁。表明你现在心情稳定，心理相对健康,请继续保 持当前状态，轻松学习，快乐生活");
+            map.put("depressionPerformance", DepressionPerformanceEnums.getDescribeByKey(psychologicalSurvey.getDepressionScores()));
             //压力积分
             map.put("psychologicalScores",psychologicalSurvey.getPsychologicalScores());
             //压力来源
@@ -125,7 +159,7 @@ public class PsychologicalSurveyController {
             //创建日期
             map.put("reportingDate", DateUtils.format_zn(psychologicalSurvey.getCrTime()));
             //问卷编号
-            map.put("questionnaireNumber","CISC201912-HA0041");
+            map.put("questionnaireNumber","202006-HA");
             //学习生活满意度
             map.put("lifeSatisfaction","你对目前学习生活满意程度不高，表现在你对现在的学校喜欢程度感到比 较喜欢，对现在所学习的专业喜欢程度感到非常喜欢。可尝试参与校园中的各 类活动，与他人建立良好关系能在一定程度上提升学习生活的幸福感。");
             map.put("generalAdvice","总体而言，你的心理状况呈现出无焦虑和无抑郁症状，你表现出较大的学业 压力，需要你继续保持积极心态，并随时关注和调节。");
@@ -242,10 +276,7 @@ public class PsychologicalSurveyController {
 //                ",{id: 29,choose: [3,4,6],},{id: 30,choose: [3,5,6],}" +
 //                ",{id: 31,choose: [\"chenpfmail@163.com\"],}]";
 
-//        String jsonStr = "[{\"id\":1,\"choose\":\"[]\"},{\"id\":2,\"choose\":\"[]\"},{\"id\":3,\"choose\":\"[]\"},{\"id\":4,\"choose\":\"[]\"},{\"id\":5,\"choose\":\"[]\"},{\"id\":6,\"choose\":\"[]\"},{\"id\":7,\"choose\":\"[]\"},{\"id\":8,\"choose\":\"[]\"},{\"id\":9,\"choose\":\"[]\"},{\"id\":10,\"choose\":\"[]\"},{\"id\":11,\"choose\":\"[]\"},{\"id\":12,\"choose\":\"[]\"},{\"id\":13,\"choose\":\"[]\"},{\"id\":14,\"choose\":\"[]\"},{\"id\":15,\"choose\":\"[]\"},{\"id\":16,\"choose\":\"[]\"},{\"id\":17,\"choose\":\"[]\"},{\"id\":18,\"choose\":\"[]\"},{\"id\":19,\"choose\":\"[]\"},{\"id\":20,\"choose\":\"[]\"},{\"id\":21,\"choose\":\"[]\"},{\"id\":22,\"choose\":\"[]\"},{\"id\":23,\"choose\":\"[]\"},{\"id\":24,\"choose\":\"[]\"},{\"id\":25,\"choose\":\"[]\"},{\"id\":26,\"choose\":\"[]\"},{\"id\":27,\"choose\":\"[]\"},{\"id\":28,\"choose\":\"[]\"},{\"id\":29,\"choose\":\"[]\"},{\"id\":30,\"choose\":\"[1]\"}]";
-//String jsonStr = "[{\"id\":1,\"choose\":\"[]\"},{\"id\":2,\"choose\":\"[]\"},{\"id\":3,\"choose\":\"[]\"},{\"id\":4,\"choose\":\"[]\"},{\"id\":5,\"choose\":\"[]\"},{\"id\":6,\"choose\":\"[]\"},{\"id\":7,\"choose\":\"[]\"},{\"id\":8,\"choose\":\"[]\"},{\"id\":9,\"choose\":\"[]\"},{\"id\":10,\"choose\":\"[]\"},{\"id\":11,\"choose\":\"[]\"},{\"id\":12,\"choose\":\"[]\"},{\"id\":13,\"choose\":\"[]\"},{\"id\":14,\"choose\":\"[]\"},{\"id\":15,\"choose\":\"[]\"},{\"id\":16,\"choose\":\"[]\"},{\"id\":17,\"choose\":\"[]\"},{\"id\":18,\"choose\":\"[]\"},{\"id\":19,\"choose\":\"[]\"},{\"id\":20,\"choose\":\"[]\"},{\"id\":21,\"choose\":\"[]\"},{\"id\":22,\"choose\":\"[]\"},{\"id\":23,\"choose\":\"[]\"},{\"id\":24,\"choose\":\"[]\"},{\"id\":25,\"choose\":\"[]\"},{\"id\":26,\"choose\":\"[]\"},{\"id\":27,\"choose\":\"[1]\"},{\"id\":28,\"choose\":\"[]\"},{\"id\":29,\"choose\":\"[5]\"},{\"id\":30,\"choose\":\"[]\"},{\"id\":31,\"choose\":\"[]\"}]";
-//    String jsonStr = "{\"jsonStr\":[{\"id\":1,\"choose\":[2]},{\"id\":2,\"choose\":[2]},{\"id\":3,\"choose\":[2]},{\"id\":4,\"choose\":[13]},{\"id\":5,\"choose\":[2]},{\"id\":6,\"choose\":[2]},{\"id\":7,\"choose\":[2]},{\"id\":8,\"choose\":[5]},{\"id\":9,\"choose\":[2]},{\"id\":10,\"choose\":[2]},{\"id\":11,\"choose\":[2]},{\"id\":12,\"choose\":[2]},{\"id\":13,\"choose\":[2]},{\"id\":14,\"choose\":[2]},{\"id\":15,\"choose\":[2]},{\"id\":16,\"choose\":[2]},{\"id\":17,\"choose\":[2]},{\"id\":18,\"choose\":[2]},{\"id\":19,\"choose\":[2]},{\"id\":20,\"choose\":[2]},{\"id\":21,\"choose\":[2]},{\"id\":22,\"choose\":[2]},{\"id\":23,\"choose\":[2]},{\"id\":24,\"choose\":[2]},{\"id\":25,\"choose\":[2]},{\"id\":26,\"choose\":[2]},{\"id\":27,\"choose\":[2]},{\"id\":28,\"choose\":[2]},{\"id\":29,\"choose\":[8]},{\"id\":30,\"choose\":[2]},{\"id\":31,\"choose\":[\"6430@qq.com\"]}]}";
-   String jsonStr ="{\"jsonStr\":[{\"id\":1,\"choose\":[3]},{\"id\":2,\"choose\":[4]},{\"id\":3,\"choose\":[4]},{\"id\":4,\"choose\":[3]},{\"id\":5,\"choose\":[4]},{\"id\":6,\"choose\":[3]},{\"id\":7,\"choose\":[3]},{\"id\":8,\"choose\":[2]},{\"id\":9,\"choose\":[3]},{\"id\":10,\"choose\":[3]},{\"id\":11,\"choose\":[3]},{\"id\":12,\"choose\":[3]},{\"id\":13,\"choose\":[3]},{\"id\":14,\"choose\":[3]},{\"id\":15,\"choose\":[3]},{\"id\":16,\"choose\":[3]},{\"id\":17,\"choose\":[3]},{\"id\":18,\"choose\":[3]},{\"id\":19,\"choose\":[3]},{\"id\":20,\"choose\":[3]},{\"id\":21,\"choose\":[3]},{\"id\":22,\"choose\":[3]},{\"id\":23,\"choose\":[3]},{\"id\":24,\"choose\":[3]},{\"id\":25,\"choose\":[3]},{\"id\":26,\"choose\":[3]},{\"id\":27,\"choose\":[3]},{\"id\":28,\"choose\":[3]},{\"id\":29,\"choose\":[3]},{\"id\":30,\"choose\":[2]},{\"id\":31,\"choose\":[\"232@qq.com\"]}]}";
+   String jsonStr ="{\"jsonStr\":[{\"id\":1,\"choose\":[3]},{\"id\":2,\"choose\":[4]},{\"id\":3,\"choose\":[4]},{\"id\":4,\"choose\":[3]},{\"id\":5,\"choose\":[4]},{\"id\":6,\"choose\":[3]},{\"id\":7,\"choose\":[3]},{\"id\":8,\"choose\":[2]},{\"id\":9,\"choose\":[3]},{\"id\":10,\"choose\":[3]},{\"id\":11,\"choose\":[3]},{\"id\":12,\"choose\":[3]},{\"id\":13,\"choose\":[3]},{\"id\":14,\"choose\":[3]},{\"id\":15,\"choose\":[3]},{\"id\":16,\"choose\":[3]},{\"id\":17,\"choose\":[3]},{\"id\":18,\"choose\":[3]},{\"id\":19,\"choose\":[3]},{\"id\":20,\"choose\":[3]},{\"id\":21,\"choose\":[3]},{\"id\":22,\"choose\":[3]},{\"id\":23,\"choose\":[3]},{\"id\":24,\"choose\":[3]},{\"id\":25,\"choose\":[3]},{\"id\":26,\"choose\":[3]},{\"id\":27,\"choose\":[3]},{\"id\":28,\"choose\":[3]},{\"id\":29,\"choose\":[3]},{\"id\":30,\"choose\":[2]},{\"id\":31,\"choose\":[\"674731792@qq.com\"]}]}";
 
     Long report = psychologicalStatusQuestionnaireService.createReport(jsonStr);
         return Resultful.ok().put("id",report);

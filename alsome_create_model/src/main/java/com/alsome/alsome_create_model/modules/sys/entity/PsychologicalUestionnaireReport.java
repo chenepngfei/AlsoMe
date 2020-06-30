@@ -73,6 +73,8 @@ public class PsychologicalUestionnaireReport implements Serializable {
 	 * 邮箱
 	 */
 	private  String email;
+
+	private  Integer isSend;
 	/**
 	 * 创建时间
 	 */

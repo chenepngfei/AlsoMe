@@ -1,7 +1,9 @@
 package com.alsome.alsome_create_model.modules.sys.service.impl;
+
 import com.AlsoMe.commons.enums.*;
 import com.AlsoMe.commons.utils.PageUtils;
 import com.AlsoMe.commons.utils.Query;
+import com.alsome.alsome_create_model.common.utils.SendEmailUtils;
 import com.alsome.alsome_create_model.modules.sys.dao.PsychologicalStatusQuestionnaireDao;
 import com.alsome.alsome_create_model.modules.sys.entity.PsychologicalStatusQuestionnaire;
 import com.alsome.alsome_create_model.modules.sys.entity.PsychologicalUestionnaireReport;
@@ -15,6 +17,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +28,12 @@ import java.util.Map;
 @Service("psychologicalStatusQuestionnaireService")
 @Slf4j
 public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<PsychologicalStatusQuestionnaireDao, PsychologicalStatusQuestionnaire> implements PsychologicalStatusQuestionnaireService {
-
+    @Value("${spring.mail.username}")
+    private String from;
+    @Value("${templatePath}")
+    private String templatePath;
+    @Autowired
+    private SendEmailUtils sendEmailUtils;
     @Autowired
     PsychologicalUestionnaireReportService psychologicalUestionnaireReportService;
 
@@ -71,20 +79,20 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                 JSONObject jsonObject = JSONObject.fromObject(jsonArray.get(i).toString());
                 if (!jsonObject.isEmpty()) {
                     Object get_id = jsonObject.get("id");
-                    log.info("get_id:{}",get_id);
-                    if(get_id == null){
+                    log.info("get_id:{}", get_id);
+                    if (get_id == null) {
                         continue;
                     }
                     JSONArray choose = jsonObject.getJSONArray("choose");
-                    if(choose.isEmpty()){
+                    if (choose.isEmpty()) {
                         continue;
                     }
 
-                    Integer  key_id = 0;
-                    if(!get_id.equals(31)){
-                        key_id = (int)choose.get(0);
+                    Integer key_id = 0;
+                    if (!get_id.equals(31)) {
+                        key_id = (int) choose.get(0);
 
-                        if(key_id <= 0){
+                        if (key_id <= 0) {
                             continue;
                         }
 
@@ -125,7 +133,7 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                         psychologicalStatusQuestionnaire.setPressureSource(psychologicalSource);
                     }
                     if (get_id.equals(10)) { //情绪受那些方面影响
-                        String  emotionalImpact =getJsonArrayToString(choose);
+                        String emotionalImpact = getJsonArrayToString(choose);
                         psychologicalUestionnaireReport.setEmotionalImpact(EmotionalImpactEnums.getNameByKeys(emotionalImpact));
                         psychologicalStatusQuestionnaire.setEmotionalImpact(emotionalImpact);
                     }
@@ -142,7 +150,7 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                         psychologicalStatusQuestionnaire.setUpsetHeartbeat(key_id);
                     }
                     if (get_id.equals(14)) { //觉得一切都好，也不会发生什么不幸:
-                        anxietyScores += ChanceEnums.getValueByKey(key_id);
+                        anxietyScores += ChanceFanEnums.getValueByKey(key_id);
                         psychologicalStatusQuestionnaire.setNotMisfortune(key_id);
                     }
                     if (get_id.equals(15)) { //因为头痛(头晕)、颈痛和背痛而苦恼:
@@ -154,8 +162,8 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                         psychologicalStatusQuestionnaire.setStomachUpset(key_id);
                     }
                     if (get_id.equals(17)) { //很容易入睡并且一夜睡得很好:
-                        depressionScores += ChanceEnums.getValueByKey(key_id);
-                        anxietyScores += ChanceEnums.getValueByKey(key_id);
+                        depressionScores += ChanceFanEnums.getValueByKey(key_id);
+                        anxietyScores += ChanceFanEnums.getValueByKey(key_id);
                         psychologicalStatusQuestionnaire.setSleepWell(key_id);
                     }
                     if (get_id.equals(18)) { //坐卧不安，难以保持平静:
@@ -172,7 +180,7 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                         psychologicalStatusQuestionnaire.setWantCry(key_id);
                     }
                     if (get_id.equals(21)) { //你与他人接触时感到愉快:
-                        depressionScores += ChanceEnums.getValueByKey(key_id);
+                        depressionScores += ChanceFanEnums.getValueByKey(key_id);
                         psychologicalStatusQuestionnaire.setFeelHappy(key_id);
                     }
                     if (get_id.equals(22)) { //你感觉很容易衰弱和疲乏
@@ -180,11 +188,11 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                         psychologicalStatusQuestionnaire.setEasyDecline(key_id);
                     }
                     if (get_id.equals(23)) { //你的头脑跟以前一样清楚:
-                        depressionScores += ChanceEnums.getValueByKey(key_id);
+                        depressionScores += ChanceFanEnums.getValueByKey(key_id);
                         psychologicalStatusQuestionnaire.setMindClear(key_id);
                     }
                     if (get_id.equals(24)) { //你吃的跟以前一样多:
-                        depressionScores += ChanceEnums.getValueByKey(key_id);
+                        depressionScores += ChanceFanEnums.getValueByKey(key_id);
                         psychologicalStatusQuestionnaire.setEatGood(key_id);
                     }
                     if (get_id.equals(25)) {  //你觉得自己是个有用的人，有人需要我:
@@ -201,20 +209,20 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
                     }
                     if (get_id.equals(28)) { //觉得今年的新冠疫情对你的学业影响
                         covidLifeSocre += key_id + ",";
-                        covidLifeSocreText = ImpactEnums.getNameByKey(key_id) + "," ;
+                        covidLifeSocreText = ImpactEnums.getNameByKey(key_id) + ",";
                         psychologicalStatusQuestionnaire.setAcademicImpact(key_id);
                     }
                     if (get_id.equals(29)) { //做得较多或者学着做的是(可选 1-3 项)
                         String lenarn_keys = getJsonArrayToString(choose);
                         covidLifeSocre += lenarn_keys + ",";
-                        covidLifeSocreText =  LearnDoEnums.getNameByKeys(lenarn_keys) + "," ;
+                        covidLifeSocreText = LearnDoEnums.getNameByKeys(lenarn_keys) + ",";
 
                         psychologicalStatusQuestionnaire.setScholarsDo(lenarn_keys);
                     }
                     if (get_id.equals(30)) { //新冠疫情给你带来了哪些感悟(可选 1-3 项):
                         String feel_keys = getJsonArrayToString(choose);
                         covidLifeSocre += feel_keys + ",";
-                        covidLifeSocreText =  FeelingEnums.getNameByKeys(feel_keys) + "," ;
+                        covidLifeSocreText = FeelingEnums.getNameByKeys(feel_keys) + ",";
 
                         psychologicalStatusQuestionnaire.setCovidFeeling(feel_keys);
                     }
@@ -230,36 +238,64 @@ public class PsychologicalStatusQuestionnaireServiceImpl extends ServiceImpl<Psy
 
             //疫情生活状态及影响
 
-            if(StringUtils.isNotBlank(covidLifeSocre)){
-                covidLifeSocre = covidLifeSocre.substring(0,covidLifeSocre.length() - 1);
-                covidLifeSocreText = covidLifeSocreText.substring(0,covidLifeSocreText.length() - 1);
+            if (StringUtils.isNotBlank(covidLifeSocre)) {
+                covidLifeSocre = covidLifeSocre.substring(0, covidLifeSocre.length() - 1);
+                covidLifeSocreText = covidLifeSocreText.substring(0, covidLifeSocreText.length() - 1);
             }
 
             psychologicalUestionnaireReport.setCovidLifeSocre(covidLifeSocre);
             psychologicalUestionnaireReport.setCovidLifeImpact(covidLifeSocreText);
             //焦虑得分
-            psychologicalUestionnaireReport.setAnxietyScores((int)Math.ceil(anxietyScores * 2.5 * 1.2));
+            psychologicalUestionnaireReport.setAnxietyScores((int) Math.ceil(anxietyScores * 2.5 * 1.2));
             //抑郁算分
-            psychologicalUestionnaireReport.setDepressionScores((int)Math.ceil(depressionScores * 2.0 * 1.25));
+            psychologicalUestionnaireReport.setDepressionScores((int) Math.ceil(depressionScores * 2.0 * 1.25));
 
             psychologicalStatusQuestionnaire.setCrTime(nowDate);
 
             this.save(psychologicalStatusQuestionnaire);
-            log.info("插入心理问卷调查：{}",psychologicalUestionnaireReport);
+            log.info("插入心理问卷调查：{}", psychologicalUestionnaireReport);
 
             psychologicalUestionnaireReport.setCrTime(nowDate);
             psychologicalUestionnaireReport.setPsqId(psychologicalStatusQuestionnaire.getId());
 
             psychologicalUestionnaireReportService.save(psychologicalUestionnaireReport);
 
-            log.info("插入心理问卷报告：{}",psychologicalUestionnaireReport);
-        } catch (Exception e) {
+            log.info("插入心理问卷报告：{}", psychologicalUestionnaireReport);
+
+
+            Long psy_id = psychologicalUestionnaireReport.getId();
+
+
+
+//            if (StringUtils.isNotBlank(psychologicalUestionnaireReport.getEmail())) {
+//                String context = "http://112.126.97.88:8080/#/result?id=" + psy_id + "&email=" + psychologicalUestionnaireReport.getEmail();
+//                //                sendEmailUtils.sendSimpleMailMessge(purs.getEmail(),"心理问卷调查",context,from);
+//
+//                try {
+//                    EmailParam emailParam = new EmailParam();
+//                    emailParam.setUrl(context);
+//                    emailParam.setCrTime(DateUtil.format(nowDate, "yyyy年MM月dd日"));
+//                    emailParam.setToEmail(psychologicalUestionnaireReport.getEmail());
+//                    String[] to = {psychologicalUestionnaireReport.getEmail()};
+//                    sendEmailUtils.thymeleafSendEmail(from, to, "心理测评报告", emailParam, templatePath);
+//                } catch (Exception e) {
+//                    // TODO Auto-generated catch block
+//                    e.printStackTrace();
+//                }
+//
+//                log.info("用户id：{},邮箱:{},发送成功", psy_id, psychologicalUestionnaireReport.getEmail());
+//            }
+        } catch(Exception e){
             log.info("操作失败");
             e.printStackTrace();
         }
-
         return psychologicalUestionnaireReport.getId();
     }
+
+
+
+
+
 
     public  static  String getJsonArrayToString(JSONArray jsonArray){
         String str = "";

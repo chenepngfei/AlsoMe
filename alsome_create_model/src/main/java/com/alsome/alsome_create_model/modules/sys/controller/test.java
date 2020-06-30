@@ -1,5 +1,7 @@
 package com.alsome.alsome_create_model.modules.sys.controller;
 
+import com.AlsoMe.commons.enums.AnxietyPerformanceEnums;
+import com.AlsoMe.commons.enums.DepressionPerformanceEnums;
 import com.AlsoMe.commons.utils.DateUtils;
 import com.AlsoMe.commons.utils.PageUtils;
 import com.AlsoMe.commons.utils.Resultful;
@@ -53,32 +55,30 @@ public class test {
     }
 
 
-
-    /**
-     * 信息
-     */
     /**
      * 信息
      */
     @RequestMapping("/info")
     public Resultful info(@RequestBody PsychologicalUestionnaireReport psychologicalUestionnaireReport ){
+
+
         Map<String,Object> map = new HashMap<>();
         //PsychologicalSurvey psychologicalSurvey = psychologicalSurveyService.getById(id);
         PsychologicalUestionnaireReport psychologicalSurvey = psychologicalUestionnaireReportService.getPsychologicalUestionnaireReport(psychologicalUestionnaireReport);
         if(psychologicalSurvey != null){
-           // ReportingSource byId = reportingSourceService.getById(psychologicalSurvey.getReportingSourceId());
-           // ReportingUnit byId1 = reportingUnitService.getById(psychologicalSurvey.getReportingUnitId());
-            map.put("reportingSource","中国海外留学生心理状态调研问卷");
-            map.put("reportingUnit","CISC中国海外留学生心理支持中心");
+//             ReportingSource byId = reportingSourceService.getById(psychologicalSurvey.getReportingSourceId());
+//             ReportingUnit byId1 = reportingUnitService.getById(psychologicalSurvey.getReportingUnitId());
+            map.put("reportingSource","2020夏•中国大学生心理状况调研问卷");
+            map.put("reportingUnit","北京心西游季教育科技有限公司");
 
             //焦虑情况积分
             map.put("anxietyScores",psychologicalSurvey.getAnxietyScores());
             //焦虑情况表现
-            map.put("anxietyPerformance","你的焦虑得分显示无焦虑症状。表明你现在心情稳定，心理相对健康,请继 续保持当前状态，用心学习，快乐生活。");
+            map.put("anxietyPerformance", AnxietyPerformanceEnums.getDescribeByKey(psychologicalSurvey.getAnxietyScores()));
             //抑郁自评得分
             map.put("depressionScores",psychologicalSurvey.getDepressionScores());
             //抑郁状况表现
-            map.put("depressionPerformance","你的抑郁得分显示无抑郁。表明你现在心情稳定，心理相对健康,请继续保 持当前状态，轻松学习，快乐生活");
+            map.put("depressionPerformance", DepressionPerformanceEnums.getDescribeByKey(psychologicalSurvey.getDepressionScores()));
             //压力积分
             map.put("psychologicalScores",psychologicalSurvey.getPsychologicalScores());
             //压力来源
@@ -86,7 +86,7 @@ public class test {
             //创建日期
             map.put("reportingDate", DateUtils.format_zn(psychologicalSurvey.getCrTime()));
             //问卷编号
-            map.put("questionnaireNumber","CISC201912-HA0041");
+            map.put("questionnaireNumber","202006-HA");
             //学习生活满意度
             map.put("lifeSatisfaction","你对目前学习生活满意程度不高，表现在你对现在的学校喜欢程度感到比 较喜欢，对现在所学习的专业喜欢程度感到非常喜欢。可尝试参与校园中的各 类活动，与他人建立良好关系能在一定程度上提升学习生活的幸福感。");
             map.put("generalAdvice","总体而言，你的心理状况呈现出无焦虑和无抑郁症状，你表现出较大的学业 压力，需要你继续保持积极心态，并随时关注和调节。");
@@ -95,6 +95,47 @@ public class test {
 
         }
 
+        return Resultful.ok().put("param", map);
+    }
+
+
+    /**
+     * 信息
+     */
+    @RequestMapping("/info/{id}/{email}")
+    public Resultful info(@PathVariable("id") Long id,@PathVariable("email") String email){
+        Map<String,Object> map = new HashMap<>();
+        //PsychologicalSurvey psychologicalSurvey = psychologicalSurveyService.getById(id);
+        PsychologicalUestionnaireReport psychologicalSurvey = psychologicalUestionnaireReportService.getById(id);
+        if(psychologicalSurvey != null){
+            // ReportingSource byId = reportingSourceService.getById(psychologicalSurvey.getReportingSourceId());
+            // ReportingUnit byId1 = reportingUnitService.getById(psychologicalSurvey.getReportingUnitId());
+            map.put("reportingSource","2020夏•中国大学生心理状况调研问卷");
+            map.put("reportingUnit","北京心西游季教育科技有限公司");
+
+            //焦虑情况积分
+            map.put("anxietyScores",psychologicalSurvey.getAnxietyScores());
+            //焦虑情况表现
+            map.put("anxietyPerformance", AnxietyPerformanceEnums.getDescribeByKey(psychologicalSurvey.getAnxietyScores()));
+            //抑郁自评得分
+            map.put("depressionScores",psychologicalSurvey.getDepressionScores());
+            //抑郁状况表现
+            map.put("depressionPerformance", DepressionPerformanceEnums.getDescribeByKey(psychologicalSurvey.getDepressionScores()));
+            //压力积分
+            map.put("psychologicalScores",psychologicalSurvey.getPsychologicalScores());
+            //压力来源
+            map.put("psychologicalSource",psychologicalSurvey.getPsychologicalSource());
+            //创建日期
+            map.put("reportingDate", DateUtils.format_zn(psychologicalSurvey.getCrTime()));
+            //问卷编号
+            map.put("questionnaireNumber","202006-HA");
+            //学习生活满意度
+            map.put("lifeSatisfaction","你对目前学习生活满意程度不高，表现在你对现在的学校喜欢程度感到比 较喜欢，对现在所学习的专业喜欢程度感到非常喜欢。可尝试参与校园中的各 类活动，与他人建立良好关系能在一定程度上提升学习生活的幸福感。");
+            map.put("generalAdvice","总体而言，你的心理状况呈现出无焦虑和无抑郁症状，你表现出较大的学业 压力，需要你继续保持积极心态，并随时关注和调节。");
+            //温馨提示
+            map.put("warmPrompt","温馨提示:当你感觉压力大的时候，运动健身是很好的选择，这样能有效减 少压力，放松心情。而且与植物亲近也是很好的减压方式，身边放一个绿植，或 者常常到大自然间散步，天然氧吧将给你带来愉悦的好心情。");
+
+        }
 
         return Resultful.ok().put("param", map);
     }

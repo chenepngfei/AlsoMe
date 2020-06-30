@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Document</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>bigscreen</title>
+    <link href="./static/css/app.328df5b0604c17ef01d0cc5229ea73ad.css" rel="stylesheet">
+    <style type="text/css">
+      html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 100%;
+      }
+
+      #app {
+        width: 100%;
+        height: 100%;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      img {
+        border: none;
+      }
+
+      input,
+      select,
+      textarea {
+        outline: none;
+        border: none;
+        background: none;
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      a {
+        text-decoration: none !important;
+      }
+
+      a:hover {
+        text-decoration: none !important;
+      }
+
+      button {
+        outline: none;
+      }
+
+      ::-webkit-scrollbar {
+        /*滚动条整体样式*/
+        width: 5px !important;
+        /*高宽分别对应横竖滚动条的尺寸*/
+        height: 5px !important;
+        border-radius: 10px !important;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        /*滚动条里面小方块*/
+        border-radius: 10px !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+      }
+
+      ::-webkit-scrollbar-track {
+        /*滚动条里面轨道*/
+        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2) !important;
+        -webkit-box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2) !important;
+        border-radius: 10px !important;
+        background: rgba(34, 32, 32, 0.5) !important;
+      }
+
+      ::-webkit-scrollbar-corner {
+        /*两个滚动条的交汇处*/
+        background: rgba(34, 32, 32, 0.5) !important;
+        display: none !important;
+      }
+      /*# sourceURL=E:/jeremygeng/问卷调查/src/App.vue */
+      /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkU6L2plcmVteWdlbmcv6Zeu5Y236LCD5p+lL3NyYy9BcHAudnVlIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLFlBQVk7RUFDWixhQUFhO0VBQ2IsVUFBVTtFQUNWLFdBQVc7Q0FDWjtBQUNEO0VBQ0UsWUFBWTtDQUNiO0FBQ0Q7RUFDRSxZQUFZO0VBQ1osYUFBYTtDQUNkO0FBQ0Q7RUFDRSxVQUFVO0VBQ1YsV0FBVztDQUNaO0FBQ0Q7O0VBRUUsaUJBQWlCO0NBQ2xCO0FBQ0Q7RUFDRSxhQUFhO0NBQ2Q7QUFDRDs7O0VBR0UsY0FBYztFQUNkLGFBQWE7RUFDYixpQkFBaUI7Q0FDbEI7QUFDRDtFQUNFLGFBQWE7Q0FDZDtBQUNEO0VBQ0UsaUNBQWlDO0NBQ2xDO0FBQ0Q7RUFDRSxpQ0FBaUM7Q0FDbEM7QUFDRDtFQUNFLGNBQWM7Q0FDZjtBQUNEO0VBQ0UsV0FBVztFQUNYLHNCQUFzQjtFQUN0QixrQkFBa0I7RUFDbEIsdUJBQXVCO0VBQ3ZCLCtCQUErQjtDQUNoQztBQUNEO0VBQ0UsWUFBWTtFQUNaLCtCQUErQjtFQUMvQixnREFBZ0Q7Q0FDakQ7QUFDRDtFQUNFLFdBQVc7RUFDWCwrREFBK0Q7RUFDL0QsdUVBQXVFO0VBQ3ZFLCtCQUErQjtFQUMvQiw2Q0FBNkM7Q0FDOUM7QUFDRDtFQUNFLGFBQWE7RUFDYiw2Q0FBNkM7RUFDN0MseUJBQXlCO0NBQzFCIiwiZmlsZSI6IkFwcC52dWUiLCJzb3VyY2VzQ29udGVudCI6WyJcbmh0bWwge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG59XG5ib2R5IHtcbiAgd2lkdGg6IDEwMCU7XG59XG4jYXBwIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cbioge1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG59XG51bCxcbm9sIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbn1cbmltZyB7XG4gIGJvcmRlcjogbm9uZTtcbn1cbmlucHV0LFxuc2VsZWN0LFxudGV4dGFyZWEge1xuICBvdXRsaW5lOiBub25lO1xuICBib3JkZXI6IG5vbmU7XG4gIGJhY2tncm91bmQ6IG5vbmU7XG59XG50ZXh0YXJlYSB7XG4gIHJlc2l6ZTogbm9uZTtcbn1cbmEge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmUgIWltcG9ydGFudDtcbn1cbmE6aG92ZXIge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmUgIWltcG9ydGFudDtcbn1cbmJ1dHRvbiB7XG4gIG91dGxpbmU6IG5vbmU7XG59XG46Oi13ZWJraXQtc2Nyb2xsYmFyIHtcbiAgLyrmu5rliqjmnaHmlbTkvZPmoLflvI8qL1xuICB3aWR0aDogNXB4ICFpbXBvcnRhbnQ7XG4gIC8q6auY5a695YiG5Yir5a+55bqU5qiq56uW5rua5Yqo5p2h55qE5bC65a+4Ki9cbiAgaGVpZ2h0OiA1cHggIWltcG9ydGFudDtcbiAgYm9yZGVyLXJhZGl1czogMTBweCAhaW1wb3J0YW50O1xufVxuOjotd2Via2l0LXNjcm9sbGJhci10aHVtYiB7XG4gIC8q5rua5Yqo5p2h6YeM6Z2i5bCP5pa55Z2XKi9cbiAgYm9yZGVyLXJhZGl1czogMTBweCAhaW1wb3J0YW50O1xuICBiYWNrZ3JvdW5kOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMikgIWltcG9ydGFudDtcbn1cbjo6LXdlYmtpdC1zY3JvbGxiYXItdHJhY2sge1xuICAvKua7muWKqOadoemHjOmdoui9qOmBkyovXG4gIGJveC1zaGFkb3c6IGluc2V0IDAgMCAxMHB4IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC4yKSAhaW1wb3J0YW50O1xuICAtd2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDAgMCAxMHB4IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC4yKSAhaW1wb3J0YW50O1xuICBib3JkZXItcmFkaXVzOiAxMHB4ICFpbXBvcnRhbnQ7XG4gIGJhY2tncm91bmQ6IHJnYmEoMzQsIDMyLCAzMiwgMC41KSAhaW1wb3J0YW50O1xufVxuOjotd2Via2l0LXNjcm9sbGJhci1jb3JuZXIge1xuICAvKuS4pOS4qua7muWKqOadoeeahOS6pOaxh+WkhCovXG4gIGJhY2tncm91bmQ6IHJnYmEoMzQsIDMyLCAzMiwgMC41KSAhaW1wb3J0YW50O1xuICBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XG59XG4iXSwic291cmNlUm9vdCI6IiJ9 */
+    </style>
+    <style type="text/css">
+      ul,
+      ol {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .box {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .header-box {
+        height: 4rem;
+        padding: 0 2rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background-color: #b1c7c7;
+      }
+
+      .logo-box {
+        width: 100px;
+      }
+
+      .logo-box img {
+        width: 100%;
+      }
+
+      .header-box .nav-box {
+        margin-left: 2.4rem;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+      }
+
+      .header-box .nav-box ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        color: white;
+      }
+
+      .header-box .nav-box ul li {
+        margin-right: 2.4rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .header-box .right-box {
+        color: white;
+      }
+
+      .content-box {
+        padding: 2rem 3rem 2rem 4rem;
+        font-size: 1.2rem;
+      }
+
+      .content-box .content-top .content-top-item {
+        margin-bottom: 2rem;
+      }
+
+      .content-box .content-top .content-top-item span {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      .content-box .content-top .content-top-item a {
+        cursor: pointer;
+        color: blue;
+      }
+
+      .content-box .content-top .content-top-item a:active {
+        color: blue;
+      }
+
+      .content-box .content-bottom {
+        margin-top: 2rem;
+      }
+
+      .content-box .content-bottom h3 {
+        line-height: 3rem;
+        border-bottom: 1px dashed #333;
+        font-size: 1.2rem;
+      }
+
+      .content-box .content-bottom p {
+        line-height: 3rem;
+      }
+
+      .detail-box {
+        /* padding: 0px 30px 0px 40px; */
+      }
+
+      .footer-box {
+        background-color: #fff;
+        padding: 0px 5rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      .footer-box .footer-item {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        overflow: hidden;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+
+      .footer-box .item-left {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      .footer-box .item-left .left-img-box {
+        width: 50rem;
+      }
+
+      .footer-box .item-left .right-img-box {
+        width: 10rem;
+      }
+
+      .footer-box .item-left .wechar-right {
+        margin-left: 2rem;
+      }
+
+      .footer-box .item-left .wechar-right h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-box .item-right {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+
+      .footer-box .item-right h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .test-box {
+        width: 100px;
+      }
+
+      .test-box img {
+        width: 100%;
+      }
+      /*# sourceURL=E:/jeremygeng/问卷调查/src/views/email/index.vue */
+      /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkU6L2plcmVteWdlbmcv6Zeu5Y236LCD5p+lL3NyYy92aWV3cy9lbWFpbC9pbmRleC52dWUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBOztFQUVFLGlCQUFpQjtDQUNsQjtBQUNEO0VBQ0UsZ0JBQWdCO0VBQ2hCLGlCQUFpQjtDQUNsQjtBQUNEO0VBQ0UsV0FBVztFQUNYLGVBQWU7Q0FDaEI7QUFDRDtFQUNFLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIscUJBQXFCO0VBQ3JCLHFCQUFxQjtFQUNyQixjQUFjO0VBQ2QsMEJBQTBCO01BQ3RCLHVCQUF1QjtVQUNuQixvQkFBb0I7RUFDNUIsMEJBQTBCO0NBQzNCO0FBQ0Q7RUFDRSxhQUFhO0NBQ2Q7QUFDRDtFQUNFLFlBQVk7Q0FDYjtBQUNEO0VBQ0Usb0JBQW9CO0VBQ3BCLG9CQUFvQjtNQUNoQixZQUFZO1VBQ1IsUUFBUTtDQUNqQjtBQUNEO0VBQ0UscUJBQXFCO0VBQ3JCLHFCQUFxQjtFQUNyQixjQUFjO0VBQ2QsMEJBQTBCO01BQ3RCLHVCQUF1QjtVQUNuQixvQkFBb0I7RUFDNUIsYUFBYTtDQUNkO0FBQ0Q7RUFDRSxxQkFBcUI7RUFDckIsa0JBQWtCO0VBQ2xCLGlCQUFpQjtDQUNsQjtBQUNEO0VBQ0UsYUFBYTtDQUNkO0FBQ0Q7RUFDRSw2QkFBNkI7RUFDN0Isa0JBQWtCO0NBQ25CO0FBQ0Q7RUFDRSxvQkFBb0I7Q0FDckI7QUFDRDtFQUNFLFlBQVk7RUFDWiwyQkFBMkI7Q0FDNUI7QUFDRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0NBQ2I7QUFDRDtFQUNFLFlBQVk7Q0FDYjtBQUNEO0VBQ0UsaUJBQWlCO0NBQ2xCO0FBQ0Q7RUFDRSxrQkFBa0I7RUFDbEIsK0JBQStCO0VBQy9CLGtCQUFrQjtDQUNuQjtBQUNEO0VBQ0Usa0JBQWtCO0NBQ25CO0FBQ0Q7RUFDRSxpQ0FBaUM7Q0FDbEM7QUFDRDtFQUNFLHVCQUF1QjtFQUN2QixrQkFBa0I7RUFDbEIscUJBQXFCO0VBQ3JCLHFCQUFxQjtFQUNyQixjQUFjO0VBQ2QsMEJBQTBCO01BQ3RCLHVCQUF1QjtVQUNuQixvQkFBb0I7Q0FDN0I7QUFDRDtFQUNFLG9CQUFvQjtNQUNoQixZQUFZO1VBQ1IsUUFBUTtFQUNoQixxQkFBcUI7RUFDckIscUJBQXFCO0VBQ3JCLGNBQWM7RUFDZCx5QkFBeUI7TUFDckIsc0JBQXNCO1VBQ2xCLHdCQUF3QjtFQUNoQyxpQkFBaUI7RUFDakIseUJBQXlCO01BQ3JCLHNCQUFzQjtVQUNsQix3QkFBd0I7Q0FDakM7QUFDRDtFQUNFLHFCQUFxQjtFQUNyQixxQkFBcUI7RUFDckIsY0FBYztFQUNkLDBCQUEwQjtNQUN0Qix1QkFBdUI7VUFDbkIsb0JBQW9CO0NBQzdCO0FBQ0Q7RUFDRSxhQUFhO0NBQ2Q7QUFDRDtFQUNFLGFBQWE7Q0FDZDtBQUNEO0VBQ0Usa0JBQWtCO0NBQ25CO0FBQ0Q7RUFDRSxrQkFBa0I7RUFDbEIsb0JBQW9CO0NBQ3JCO0FBQ0Q7RUFDRSw2QkFBNkI7RUFDN0IsOEJBQThCO01BQzFCLDJCQUEyQjtVQUN2Qix1QkFBdUI7Q0FDaEM7QUFDRDtFQUNFLGtCQUFrQjtFQUNsQixvQkFBb0I7Q0FDckI7QUFDRDtFQUNFLGFBQWE7Q0FDZDtBQUNEO0VBQ0UsWUFBWTtDQUNiIiwiZmlsZSI6ImluZGV4LnZ1ZSIsInNvdXJjZXNDb250ZW50IjpbIlxudWwsXG5vbCB7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG59XG5pbWcge1xuICBtYXgtd2lkdGg6IDEwMCU7XG4gIG1heC1oZWlnaHQ6IDEwMCU7XG59XG4uYm94IHtcbiAgd2lkdGg6IDkwJTtcbiAgbWFyZ2luOiAwIGF1dG87XG59XG4uaGVhZGVyLWJveCB7XG4gIGhlaWdodDogNHJlbTtcbiAgcGFkZGluZzogMCAycmVtO1xuICBkaXNwbGF5OiAtd2Via2l0LWJveDtcbiAgZGlzcGxheTogLW1zLWZsZXhib3g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIC13ZWJraXQtYm94LWFsaWduOiBjZW50ZXI7XG4gICAgICAtbXMtZmxleC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICNiMWM3Yzc7XG59XG4ubG9nby1ib3gge1xuICB3aWR0aDogMTAwcHg7XG59XG4ubG9nby1ib3ggaW1nIHtcbiAgd2lkdGg6IDEwMCU7XG59XG4uaGVhZGVyLWJveCAubmF2LWJveCB7XG4gIG1hcmdpbi1sZWZ0OiAyLjRyZW07XG4gIC13ZWJraXQtYm94LWZsZXg6IDE7XG4gICAgICAtbXMtZmxleDogMTtcbiAgICAgICAgICBmbGV4OiAxO1xufVxuLmhlYWRlci1ib3ggLm5hdi1ib3ggdWwge1xuICBkaXNwbGF5OiAtd2Via2l0LWJveDtcbiAgZGlzcGxheTogLW1zLWZsZXhib3g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIC13ZWJraXQtYm94LWFsaWduOiBjZW50ZXI7XG4gICAgICAtbXMtZmxleC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cbi5oZWFkZXItYm94IC5uYXYtYm94IHVsIGxpIHtcbiAgbWFyZ2luLXJpZ2h0OiAyLjRyZW07XG4gIGZvbnQtc2l6ZTogMS4ycmVtO1xuICBmb250LXdlaWdodDogNjAwO1xufVxuLmhlYWRlci1ib3ggLnJpZ2h0LWJveCB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cbi5jb250ZW50LWJveCB7XG4gIHBhZGRpbmc6IDJyZW0gM3JlbSAycmVtIDRyZW07XG4gIGZvbnQtc2l6ZTogMS4ycmVtO1xufVxuLmNvbnRlbnQtYm94IC5jb250ZW50LXRvcCAuY29udGVudC10b3AtaXRlbSB7XG4gIG1hcmdpbi1ib3R0b206IDJyZW07XG59XG4uY29udGVudC1ib3ggLmNvbnRlbnQtdG9wIC5jb250ZW50LXRvcC1pdGVtIHNwYW4ge1xuICBjb2xvcjogYmx1ZTtcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XG59XG4uY29udGVudC1ib3ggLmNvbnRlbnQtdG9wIC5jb250ZW50LXRvcC1pdGVtIGEge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGNvbG9yOiBibHVlO1xufVxuLmNvbnRlbnQtYm94IC5jb250ZW50LXRvcCAuY29udGVudC10b3AtaXRlbSBhOmFjdGl2ZSB7XG4gIGNvbG9yOiBibHVlO1xufVxuLmNvbnRlbnQtYm94IC5jb250ZW50LWJvdHRvbSB7XG4gIG1hcmdpbi10b3A6IDJyZW07XG59XG4uY29udGVudC1ib3ggLmNvbnRlbnQtYm90dG9tIGgzIHtcbiAgbGluZS1oZWlnaHQ6IDNyZW07XG4gIGJvcmRlci1ib3R0b206IDFweCBkYXNoZWQgIzMzMztcbiAgZm9udC1zaXplOiAxLjJyZW07XG59XG4uY29udGVudC1ib3ggLmNvbnRlbnQtYm90dG9tIHAge1xuICBsaW5lLWhlaWdodDogM3JlbTtcbn1cbi5kZXRhaWwtYm94IHtcbiAgLyogcGFkZGluZzogMHB4IDMwcHggMHB4IDQwcHg7ICovXG59XG4uZm9vdGVyLWJveCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG4gIHBhZGRpbmc6IDBweCA1cmVtO1xuICBkaXNwbGF5OiAtd2Via2l0LWJveDtcbiAgZGlzcGxheTogLW1zLWZsZXhib3g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIC13ZWJraXQtYm94LWFsaWduOiBjZW50ZXI7XG4gICAgICAtbXMtZmxleC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4uZm9vdGVyLWJveCAuZm9vdGVyLWl0ZW0ge1xuICAtd2Via2l0LWJveC1mbGV4OiAxO1xuICAgICAgLW1zLWZsZXg6IDE7XG4gICAgICAgICAgZmxleDogMTtcbiAgZGlzcGxheTogLXdlYmtpdC1ib3g7XG4gIGRpc3BsYXk6IC1tcy1mbGV4Ym94O1xuICBkaXNwbGF5OiBmbGV4O1xuICAtd2Via2l0LWJveC1hbGlnbjogc3RhcnQ7XG4gICAgICAtbXMtZmxleC1hbGlnbjogc3RhcnQ7XG4gICAgICAgICAgYWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIC13ZWJraXQtYm94LXBhY2s6IGNlbnRlcjtcbiAgICAgIC1tcy1mbGV4LXBhY2s6IGNlbnRlcjtcbiAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cbi5mb290ZXItYm94IC5pdGVtLWxlZnQge1xuICBkaXNwbGF5OiAtd2Via2l0LWJveDtcbiAgZGlzcGxheTogLW1zLWZsZXhib3g7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIC13ZWJraXQtYm94LWFsaWduOiBjZW50ZXI7XG4gICAgICAtbXMtZmxleC1hbGlnbjogY2VudGVyO1xuICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4uZm9vdGVyLWJveCAuaXRlbS1sZWZ0IC5sZWZ0LWltZy1ib3gge1xuICB3aWR0aDogNTByZW07XG59XG4uZm9vdGVyLWJveCAuaXRlbS1sZWZ0IC5yaWdodC1pbWctYm94IHtcbiAgd2lkdGg6IDEwcmVtO1xufVxuLmZvb3Rlci1ib3ggLml0ZW0tbGVmdCAud2VjaGFyLXJpZ2h0IHtcbiAgbWFyZ2luLWxlZnQ6IDJyZW07XG59XG4uZm9vdGVyLWJveCAuaXRlbS1sZWZ0IC53ZWNoYXItcmlnaHQgaDMge1xuICBmb250LXNpemU6IDEuMnJlbTtcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbn1cbi5mb290ZXItYm94IC5pdGVtLXJpZ2h0IHtcbiAgLXdlYmtpdC1ib3gtb3JpZW50OiB2ZXJ0aWNhbDtcbiAgLXdlYmtpdC1ib3gtZGlyZWN0aW9uOiBub3JtYWw7XG4gICAgICAtbXMtZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuLmZvb3Rlci1ib3ggLml0ZW0tcmlnaHQgaDMge1xuICBmb250LXNpemU6IDEuMnJlbTtcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcbn1cbi50ZXN0LWJveCB7XG4gIHdpZHRoOiAxMDBweDtcbn1cbi50ZXN0LWJveCBpbWcge1xuICB3aWR0aDogMTAwJTtcbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */
+    </style>
+  </head>
+
+<body>
+<div id="app">
+  <div class="box">
+    <div class="header-box">
+      <div class="logo-box"><img src="http://112.126.97.88:8080/static/img/logo.db12709.png"></div>
+
+      </div>
+
+    </div>
+    <div class="content-box">
+      <div class="content-top">
+        <div class="content-top-item">
+          <p>亲爱的用户，您好：</p>
+        </div>
+        <div class="content-top-item">
+          您的Alsome邮箱 <span>[[${emailParam.toEmail}]]</span> 于 [[${emailParam.crTime}]] 完成了心理测评。下面是您的报告，请注意查看
+        </div>
+        <div class="content-top-item"><span>[[${emailParam.url}]]</span>
+          <a th:href="@{${emailParam.url}}"  target="_blank">立即查看</a>
+        </div>
+      </div>
+      <div class="detail-box">
+        <p>AlsoMe大学生纯净心灵社交互助平台，快一起开启心灵探险的西游记，心理互助支持，心灵匹配交友，降妖除魔升级，寻觅真正的自己。</p>
+        <p>您可以添加二维码进入AlsoMe，大学生心理测评官方群，群内不定期提供各种心理测试，互助问答，更有红包礼品等着你噢！</p>
+      </div>
+      <div class="content-bottom">
+        <h3>心西游季</h3>
+        <p>此为系统邮件请勿回复</p>
+      </div>
+    </div>
+    <div class="footer-box">
+      <div class="footer-item item-left">
+        <div class="left-img-box"><img src="http://112.126.97.88:8080/static/img/wechart.8753977.jpg"></div>
+      </div>
+      <div class="footer-item item-left">
+        <div class="right-img-box"><img src="http://112.126.97.88:8080/static/img/test.2ecafc2.png"></div>
+        <div class="wechar-right">
+          <h3>大学生心理测评活动官方群</h3>
+          <p>扫码进群</p>
+          <p>获取技术干货、技术咨询</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

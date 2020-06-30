@@ -17,6 +17,7 @@
         <result property="covidLifeSocre" column="covid_Life_socre"/>
         <result property="covidLifeImpact" column="covid_Life_Impact"/>
         <result property="email" column="email"/>
+        <result property="isSend" column="is_send"/>
         <result property="crTime" column="cr_time"/>
     </resultMap>
 

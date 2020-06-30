@@ -1,4 +1,4 @@
-package com.AlsoMe.commons.utils;
+package com.alsome.alsome_create_model.modules.job.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

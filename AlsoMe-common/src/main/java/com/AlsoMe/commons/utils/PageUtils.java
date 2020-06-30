@@ -1,5 +1,7 @@
 package com.AlsoMe.commons.utils;
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class PageUtils implements Serializable {
 	 * 列表数据
 	 */
 	private List<?> list;
-
+	
 	/**
 	 * 分页
 	 * @param list        列表数据
@@ -41,7 +43,7 @@ public class PageUtils implements Serializable {
 		this.totalCount = totalCount;
 		this.pageSize = pageSize;
 		this.currPage = currPage;
-		this.totalPage = (int) Math.ceil((double)totalCount/pageSize);
+		this.totalPage = (int)Math.ceil((double)totalCount/pageSize);
 	}
 
 	/**
@@ -94,5 +96,5 @@ public class PageUtils implements Serializable {
 	public void setList(List<?> list) {
 		this.list = list;
 	}
-
+	
 }

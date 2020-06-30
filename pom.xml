@@ -6,6 +6,8 @@
     <modules>
         <module>AlsoMe-common</module>
         <module>alsome_create_model</module>
+        <module>jieba</module>
+        <module>xinlishejiao</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -34,10 +36,31 @@
         <alsome.version>1.0-SNAPSHOT</alsome.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <lombok.version>1.18.10</lombok.version>
+        <jackson.version>2.9.8</jackson.version>
+        <shiro.version>1.4.0</shiro.version>
+        <kaptcha.version>0.0.9</kaptcha.version>
     </properties>
     <dependencyManagement>
 
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
             <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
             <dependency>
@@ -110,10 +133,6 @@
                 <version>${gson.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context-support</artifactId>
-            </dependency>
 
             <dependency>
                 <groupId>org.quartz-scheduler</groupId>
