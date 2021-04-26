@@ -31,7 +31,7 @@
         <fastjson.version>1.2.58</fastjson.version>
         <joda.time.version>2.9.9</joda.time.version>
         <common.lang3.version>3.10</common.lang3.version>
-        <commons.io.version>2.5</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
         <quartz.version>2.3.0</quartz.version>
         <alsome.version>1.0-SNAPSHOT</alsome.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
