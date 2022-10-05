@@ -36,7 +36,7 @@
         <alsome.version>1.0-SNAPSHOT</alsome.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <lombok.version>1.18.10</lombok.version>
-        <jackson.version>2.9.8</jackson.version>
+        <jackson.version>2.12.6.1</jackson.version>
         <shiro.version>1.4.0</shiro.version>
         <kaptcha.version>0.0.9</kaptcha.version>
     </properties>
